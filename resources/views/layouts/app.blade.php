@@ -3,6 +3,12 @@
 <head>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Cadastro de produtos</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
