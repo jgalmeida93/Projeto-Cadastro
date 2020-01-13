@@ -11,7 +11,7 @@
                     name="nomeCategoria" placeholder="Categoria">
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-                <button type="cancel" class="btn btn-secondary btn-sm">Cancelar</button>
+                <a href="/categorias" class="btn btn-secondary btn-sm" role="button">Cancelar</a>
             </form>
         </div>
     </div>
