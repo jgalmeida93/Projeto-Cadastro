@@ -8,10 +8,15 @@
         body {
             padding: 20px;
         }
+        .navbar {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        @component('componente_navbar')
+        @endcomponent
         <main role="main">
             @hasSection('body')
                 @yield('body')
