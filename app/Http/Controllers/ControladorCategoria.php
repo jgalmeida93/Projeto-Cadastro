@@ -62,7 +62,12 @@ class ControladorCategoria extends Controller
      */
     public function edit($id)
     {
-        //
+        $cat = Categoria::find($id);
+        if (isset($cat)) {
+            return view('editar_categoria', compact('cat'));
+        }
+
+        return redirect(('/categorias'));
     }
 
     /**
@@ -74,7 +79,14 @@ class ControladorCategoria extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cat = Categoria::find($id);
+        if (isset($cat)) {
+            $cat->nome = $request->input('nomeCategoria');
+            $cat->save();
+        }
+
+        return redirect(('/categorias'));
+        
     }
 
     /**
@@ -85,6 +97,10 @@ class ControladorCategoria extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cat = Categoria::find($id);
+        if (isset($cat)) {
+            $cat->delete();
+        }
+        return redirect('/categorias');
     }
 }

@@ -20,8 +20,8 @@
                         <td>{{ $cat->id }}</td>
                         <td>{{ $cat->nome }}</td>
                             <td>
-                            <a href="/categorias/editar{{ $cat->id }}" class="btn btn-sm btn-warning">Editar</a>
-                            <a href="/categorias/apagar{{ $cat->id }}" class="btn btn-sm btn-danger">Remover</a>
+                            <a href="/categorias/editar/{{ $cat->id }}" class="btn btn-sm btn-primary">Editar</a>
+                            <a href="/categorias/apagar/{{ $cat->id }}" class="btn btn-sm btn-danger">Remover</a>
                             </td>
                         </tr>
                     @endforeach
