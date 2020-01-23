@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Brand``</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" 
     data-target="#navbar" aria-controls="navbar" aria-expanded="false" 
     aria-label="Alterna navegação">
