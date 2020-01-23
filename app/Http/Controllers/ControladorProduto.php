@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Categoria;
+use App\Produto;
 use Illuminate\Http\Request;
 
 class ControladorProduto extends Controller
@@ -13,7 +15,9 @@ class ControladorProduto extends Controller
      */
     public function index()
     {
-        return view('produtos');
+        $prods = Produto::all();
+        $cats = Categoria::all();
+        return view('produtos', compact(['prods', 'cats']));
     }
 
     /**
@@ -23,7 +27,8 @@ class ControladorProduto extends Controller
      */
     public function create()
     {
-        //
+        $cats = Categoria::all();
+        return view('novo_produto', compact('cats'));
     }
 
     /**
@@ -34,7 +39,13 @@ class ControladorProduto extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $prod = new Produto();
+        $prod->nome = $request->input('nomeProduto');
+        $prod->estoque = $request->input('qtdEstoque');
+        $prod->categoria_id = $request->input('categoria');
+        $prod->preco = $request->input('precoProduto');
+        $prod->save();
+        return redirect('/produtos');
     }
 
     /**
