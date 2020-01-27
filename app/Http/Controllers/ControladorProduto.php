@@ -16,8 +16,12 @@ class ControladorProduto extends Controller
     public function index()
     {
         $prods = Produto::all();
-        $cats = Categoria::all();
-        return view('produtos', compact(['prods', 'cats']));
+        return $prods->toJson();
+    }
+
+    public function indexView() 
+    {
+        return view('produtos');
     }
 
     /**
