@@ -57,9 +57,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="departamentoProduto" class="control-label">Departamento</label>
+                            <label for="categoriaProduto" class="control-label">Categoria</label>
                             <div class="input-group">
-                                <select class="form-control" id="departamentoProduto">
+                                <select class="form-control" id="categoriaProduto">
 
                                 </select>
                             </div>
@@ -83,8 +83,21 @@
             $('#nomeProduto').val('');
             $('#precoProduto').val('');
             $('#qtdProduto').val('');
-            $('#departamentoProduto').val('');
             $('#modalProdutos').modal('show');
         }
+
+        function carregarCategorias() {
+            
+        $.getJSON('/api/categorias', function(data) {
+            for(i = 0; i < data.length; i++) {
+                opt = '<option value="' + data[i].id + '">' + data[i].nome + '</option>';
+                $('#categoriaProduto').append(opt);
+            }
+        });
+
+        }
+        $(function(){
+            carregarCategorias();
+        });
     </script>
 @endsection
