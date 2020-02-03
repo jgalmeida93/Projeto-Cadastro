@@ -44,12 +44,12 @@ class ControladorProduto extends Controller
     public function store(Request $request)
     {
         $prod = new Produto();
-        $prod->nome = $request->input('nomeProduto');
-        $prod->estoque = $request->input('qtdEstoque');
-        $prod->categoria_id = $request->input('categoria');
-        $prod->preco = $request->input('precoProduto');
+        $prod->nome = $request->input('nome');
+        $prod->estoque = $request->input('estoque');
+        $prod->categoria_id = $request->input('categoria_id');
+        $prod->preco = $request->input('preco');
         $prod->save();
-        return redirect('/produtos');
+        return json_encode($prod);
     }
 
     /**

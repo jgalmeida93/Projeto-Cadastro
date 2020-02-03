@@ -41,25 +41,25 @@
                         <div class="form-group">
                             <label for="nomeProduto" class="control-label">Nome do produto</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="nomeProduto" placeholder="Nome do produto">
+                                <input type="text" name="nomeProduto" class="form-control" id="nomeProduto" placeholder="Nome do produto">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="precoProduto" class="control-label">Preço</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" id="precoProduto" placeholder="Preço do produto">
+                                <input type="number" name="precoProduto" class="form-control" id="precoProduto" placeholder="Preço do produto">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="qtdProduto" class="control-label">Quantidade</label>
+                            <label for="qtdEstoque" class="control-label">Quantidade</label>
                             <div class="input-group">
-                                <input type="number" class="form-control" id="qtdProduto" placeholder="Quantidade">
+                                <input type="number" name="qtdEstoque" class="form-control" id="qtdEstoque" placeholder="Quantidade">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="categoriaProduto" class="control-label">Categoria</label>
                             <div class="input-group">
-                                <select class="form-control" id="categoriaProduto">
+                                <select class="form-control" name="categoriaProduto" id="categoriaProduto">
 
                                 </select>
                             </div>
@@ -89,7 +89,7 @@
         function novoProduto() {
             $('#nomeProduto').val('');
             $('#precoProduto').val('');
-            $('#qtdProduto').val('');
+            $('#qtdEstoque').val('');
             $('#modalProdutos').modal('show');
         }
 
@@ -127,6 +127,27 @@
 
             return linha;    
         }
+
+        function criarProduto() {
+            prod = { 
+                nome: $("#nomeProduto").val(), 
+                estoque: $("#qtdEstoque").val(), 
+                categoria_id: $("#categoriaProduto").val(), 
+                preco: $("#precoProduto").val() 
+            };
+            $.post("/api/produtos", prod, function(data) {
+                console.log(data);
+                
+            })
+        }
+
+        $("#formProduto").submit(
+            function(event) {
+                event.preventDefault();
+                criarProduto();
+                $("#modalProdutos").modal('hide');
+            }
+        );
 
         $(function(){
             carregarCategorias();
