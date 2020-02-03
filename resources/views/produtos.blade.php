@@ -136,7 +136,9 @@
                 preco: $("#precoProduto").val() 
             };
             $.post("/api/produtos", prod, function(data) {
-                console.log(data);
+                produto = JSON.parse(data);
+                linha = montarLinha(produto);
+                $('#tabelaProdutos>tbody').append(linha);
                 
             })
         }
