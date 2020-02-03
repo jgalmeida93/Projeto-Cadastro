@@ -177,10 +177,38 @@
             })
         }
 
+        function salvarProduto() {
+            prod = { 
+                id: $('#id').val(),
+                nome: $("#nomeProduto").val(), 
+                estoque: $("#qtdEstoque").val(), 
+                categoria_id: $("#categoriaProduto").val(), 
+                preco: $("#precoProduto").val() 
+            };
+
+            $.ajax({
+                type: "PUT",
+                url: "/api/produtos/" + prod.id,
+                context: this,
+                data: prod,
+                success: function() {
+                    console.log('Salvou OK');
+                },
+                error: function(error) {
+                    console.log(error);
+                    
+                }
+            })
+        }
+
         $("#formProduto").submit(
             function(event) {
                 event.preventDefault();
-                criarProduto();
+                if($('#id').val() != '') { 
+                    salvarProduto();
+                } else {
+                    criarProduto();
+                }
                 $("#modalProdutos").modal('hide');
             }
         );
