@@ -88,16 +88,7 @@ class ControladorProduto extends Controller
      */
     public function update(Request $request, $id)
     {
-        $prod = Produto::find($id);
-        if (isset($prod)) {
-            $prod->nome = $request->input('nomeProduto');
-            $prod->estoque = $request->input('qtdEstoque');
-            $prod->preco = $request->input('precoProduto');
-            $prod->categoria_id = $request->input('categoria');
-            $prod->save();
-        }
-
-        return redirect(('/produtos'));
+        
     }
 
     /**
@@ -111,7 +102,8 @@ class ControladorProduto extends Controller
         $prod = Produto::find($id);
         if (isset($prod)) {
             $prod->delete();
+            return response('OK', 200);
         }
-        return redirect('/produtos');
+        return response('Produto não encontrado', 400);
     }
 }

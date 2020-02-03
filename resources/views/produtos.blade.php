@@ -120,12 +120,34 @@
             "<td>" + p.preco + "</td>" +
             "<td>" + p.categoria_id + "</td>" +
             "<td>" + 
-                '<button class="btn btn-sm btn-primary mr-1">Editar</button>' +
-                '<button class="btn btn-sm btn-danger ml-1">Apagar</button>'  + 
+                '<button class="btn btn-sm btn-primary mr-1" onclick="editar(' + p.id + ')">Editar</button>' +
+                '<button class="btn btn-sm btn-danger ml-1" onclick="remover(' + p.id + ')">Apagar</button>'  + 
             "</td>" +
             "</tr>";
 
             return linha;    
+        }
+
+        function remover(id) {
+            $.ajax({
+                type: "DELETE",
+                url: "/api/produtos/" + id,
+                context: this,
+                success: function() {
+                    linhas = $("#tabelaProdutos>tbody>tr");
+                    e = linhas.filter(
+                        function(i, element) {
+                            return element.cells[0].textContent == id;
+                        }
+                    );
+                    if (e) {
+                        e.remove();
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            })
         }
 
         function criarProduto() {
