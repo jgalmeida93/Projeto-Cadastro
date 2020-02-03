@@ -128,6 +128,18 @@
             return linha;    
         }
 
+        function editar(id) {
+            $.getJSON('/api/produtos/' + id, function(data) {
+            $('#id').val(data.id);
+            $('#nomeProduto').val(data.nome);
+            $('#precoProduto').val(data.preco);
+            $('#qtdEstoque').val(data.estoque);
+            $('#categoriaProduto').val(data.categoria_id);
+            $('#modalProdutos').modal('show');
+                
+            })
+        }
+
         function remover(id) {
             $.ajax({
                 type: "DELETE",
